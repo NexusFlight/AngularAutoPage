@@ -1,0 +1,43 @@
+<div *ngFor="let item of properties">
+  <div *ngIf="isTypeOf(item.value, TextInput)">
+    Text Area!
+    <br />
+    <mat-label>{{ item.display }}</mat-label>
+    <input
+      matInput
+      [id]="item.display"
+      [value]="item.value"
+      #text
+      (keyup)="change(item.key, text.value)"
+    />
+  </div>
+  <div *ngIf="isTypeOf(item.value, NumberInput)">
+    <br />
+    Number Input
+    <br />
+
+    <mat-label>{{ item.display }} </mat-label>
+    <input
+      matInput
+      type="number"
+      [id]="item.display"
+      [value]="item.value"
+      #number
+      (keyup)="change(item.key, number.value)"
+    />
+  </div>
+
+  <div *ngIf="isTypeOf(item.value, Checkbox)">
+    <br />
+    Boolean Input
+    <br />
+
+    <mat-label>{{ item.display }} </mat-label>
+    <mat-checkbox
+      [id]="item.display"
+      [value]="item.value"
+      #bool
+      (change)="change(item.key, bool.checked)"
+    />
+  </div>
+</div>

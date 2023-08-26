@@ -1,0 +1,29 @@
+<div *ngFor="let item of properties">
+  <div *ngIf="isTypeOf(item, TextInput)">
+    Text Area!
+    <br />
+    <label [for]="item.label" [class]="item.labelClasses">{{ item.label }}</label>
+    <textarea
+      [id]="item.label"
+      [(ngModel)]="item.value"
+      [rows]="item.rows"
+      [cols]="item.cols"
+      [class]="item.inputClasses"
+    ></textarea>
+  </div>
+  <div *ngIf="isTypeOf(item, NumberInput)">
+    <br />
+    Number Input
+    <br />
+
+    <label [for]="item.label" [class]="item.labelClasses">{{ item.label }} </label>
+    <input
+      type="number"
+      [id]="item.label"
+      [value]="item.value"
+      [class]="item.inputClasses"
+    />
+  </div>
+  <div *ngIf="isTypeOf(item, SaveButton)">
+    <button (click)="item.value()">{{item.label}}</button>
+</div>
